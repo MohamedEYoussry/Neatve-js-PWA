@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <label>Choose User Name :</label>
+    <select id="Selete0" onchange="getselected()"></select>
+    <div id="Div"></div>
+    <script>
+        {
+            var xhr = new XMLHttpRequest();
+            //2
+            xhr.open("GET", "https://reqres.in/api/users")
+            //3 
+            xhr.send()
+            //4
+            xhr.addEventListener("readystatechange", function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var alldata = JSON.parse(xhr.response)
+                    data = alldata.data
+                    console.log(alldata.data)
+                    for (var i = 0; i < data.length; i++) {
+                        student = document.createElement("option");
+                        student.textContent = alldata.data[i].first_name + "" + alldata.data[i].last_name;
+                        document.getElementById("Selete0").appendChild(student)
+                    }
+
+                }
+            })
+        }
+        function getselected() {
+            var selectedValues = document.getElementById("Selete0").value
+            for (var studentData of data) {
+                // console.log(studentD)
+                if (studentData["first_name"] + "" + studentData["last_name"] == selectedValues) {
+
+                    var studentName = document.createElement("h3")
+                    studentName.textContent = studentData["first_name"] + " " + studentData["last_name"]
+                    document.getElementById("Div").appendChild(studentName)
+
+                    var studentID = document.createElement("h3")
+                    studentID.textContent = studentData.id
+                    document.getElementById("Div").appendChild(studentID)
+
+                    var studentEmail = document.createElement("h3")
+                    studentEmail.textContent = studentData.email
+                    document.getElementById("Div").appendChild(studentEmail)
+
+                    var studentImage = document.createElement("img")
+                    studentImage.src = studentData.avatar
+                    document.getElementById("Div").appendChild(studentImage)
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

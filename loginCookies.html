@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Login form</title>
+</head>
+<body>
+    <!-- onload="reload()" -->
+    <form >
+        <input type="text"  >
+        <input type="password" >
+        <!-- <label><input type="checkbox" name="checkbox" value="value">Remember Me</label>
+        <br>
+        <br> -->
+
+        <button onclick="Savedata()">Login</button>
+    </form>
+  
+
+    <script>
+        var userName
+        var password
+        // var checkbox = document.getElementsByTagName("input")[2]
+
+        // document.getElementsByTagName("input")[1].value
+        function Savedata(){
+            var d =new Date()
+            d.setMonth(d.getMonth()+1)
+            
+             document.cookie= "userName="+document.getElementsByTagName("input")[0].value+";expires="+d
+             document.cookie="password="+document.getElementsByTagName("input")[1].value+";expires="+d
+            // // Textlocalstorage= 
+            //  localStorage.setItem("Username",iText)
+            // // Passwordlocalstorage=
+            //  localStorage.setItem("Password",iPassword)
+
+            
+        } 
+
+        function load() {
+
+            //   document.getElementsByTagName("input")[0].value= localStorage.getItem("Username")
+            //   document.getElementsByTagName("input")[1].value=localStorage.getItem("Password")
+            var SavedCookies = document.cookie
+            var cokkiesArr = SavedCookies.split(";")
+            var obj={}
+            for (var i=0 ;i < cokkiesArr.length;i++)
+            { var arr = cokkiesArr[i].split("=")
+            obj[arr[0].trim()]=arr[1]
+
+            }
+            document.getElementsByTagName("input")[0].value=obj.userName
+            document.getElementsByTagName("input")[1].value=obj.password
+
+  }
+  window.onload = load;
+
+        //  document.getElementsByTagName("input")[0].value= localStorage.getItem("Username")
+        //  document.getElementsByTagName("input")[1].value=localStorage.getItem("Password")
+
+
+        // window.onload(
+        //     // function reload()
+        //     {
+            
+
+        // }    
+        // )
+               
+        
+    </script>
+</body>
+</html>

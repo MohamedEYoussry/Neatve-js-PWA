@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="manifest" href="./manifest/manifest.webmanifest">
+<!-- -->
+</head>
+<body>
+    <h1>PWA</h1>
+    <a href="./2.html">Second Html</a>
+    <br>
+    <br>
+    <a href="./3.html">Third Html</a>
+<script>
+    if("serviceWorker" in navigator){
+        window.addEventListener("load",()=>{
+            navigator.serviceWorker.register("sw.js").then(register =>{
+                console.log(register);
+            }).catch(err=>{
+                console.log(err);
+            })
+        })
+    }
+
+</script>
+
+</body>
+</html>

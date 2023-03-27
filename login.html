@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Login form</title>
+</head>
+<body>
+    <!-- onload="reload()" -->
+    <form >
+        <input type="text"  >
+        <input type="password" >
+        <!-- <label><input type="checkbox" name="checkbox" value="value">Remember Me</label>
+        <br>
+        <br> -->
+
+        <button onclick="Savedata()">Login</button>
+    </form>
+  
+
+    <script>
+        var iText
+        var iPassword
+        var checkbox = document.getElementsByTagName("input")[2]
+
+
+        function Savedata(){
+             iText= document.getElementsByTagName("input")[0].value
+             iPassword=document.getElementsByTagName("input")[1].value
+            // Textlocalstorage= 
+             localStorage.setItem("Username",iText)
+            // Passwordlocalstorage=
+             localStorage.setItem("Password",iPassword)
+
+            
+        } 
+
+        function load() {
+
+              document.getElementsByTagName("input")[0].value= localStorage.getItem("Username")
+              document.getElementsByTagName("input")[1].value=localStorage.getItem("Password")
+  }
+  window.onload = load;
+
+        //  document.getElementsByTagName("input")[0].value= localStorage.getItem("Username")
+        //  document.getElementsByTagName("input")[1].value=localStorage.getItem("Password")
+
+
+        // window.onload(
+        //     // function reload()
+        //     {
+            
+
+        // }    
+        // )
+               
+        
+    </script>
+</body>
+</html>

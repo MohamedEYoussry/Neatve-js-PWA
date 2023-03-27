@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Ajax</title>
+</head>
+<body>
+    <input type="text">
+    <button onclick="showbyid()"> Display</button>
+    <script>
+        //1
+        function showbyid() {
+
+            {
+                var xhr = new XMLHttpRequest();
+                var id = document.querySelector("input").value
+                //2
+                xhr.open("GET", "https://reqres.in/api/users/" + id + "")
+                //3 
+                xhr.send()
+                //4
+                xhr.addEventListener("readystatechange", function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var alldata = JSON.parse(xhr.response)
+                        // console.log(alldata.data)
+                        var haeder = document.createElement("h4")
+                        haeder.textContent = "" + alldata.data.first_name + " " + alldata.data.last_name + ""
+                        document.body.appendChild(haeder)
+                        var image = document.createElement("img")
+                        image.src = alldata.data.avatar
+                        document.body.appendChild(image)
+
+                    }
+                })
+            }
+        }
+    </script>
+
+</body>
+
+</html>
